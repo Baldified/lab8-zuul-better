@@ -18,7 +18,7 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
-        
+    private CommandWords commandWords;
     /**
      * Create the game and initialise its internal map.
      */
@@ -26,6 +26,7 @@ public class Game
     {
         createRooms();
         parser = new Parser();
+        commandWords = new CommandWords();
     }
 
     /**
@@ -115,6 +116,9 @@ public class Game
         else if (commandWord.equals("quit")) {
             wantToQuit = quit(command);
         }
+        else if (commandWord.equals("help2")) {
+            printDetailedHelp();
+        }
         // else command not recognised.
         return wantToQuit;
     }
@@ -176,5 +180,12 @@ public class Game
             // signal that we want to quit
             return true;  
         }
+    }
+    private void printDetailedHelp() {
+        System.out.println("You are lost. You are alone. You wander");
+        System.out.println("around at the university.");
+        System.out.println();
+        System.out.println("Your command words are:");
+        commandWords.getCommandInfo();
     }
 }
